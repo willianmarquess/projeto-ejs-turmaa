@@ -19,7 +19,31 @@ async function inserir(tarefa: Tarefa) {
     );
 }
 
+async function buscar() {
+    const { rows } = await conn.query('SELECT * FROM tarefa;');
+    return rows;
+}
+
+async function deletar(id: string) {
+    await conn.query('DELETE FROM tarefa WHERE id = $1', 
+        [
+            id
+        ]
+    );
+}
+
+async function buscarPorId(id: string) {
+    const { rows } = await conn.query(
+        'SELECT * FROM tarefa WHERE id = $1;',
+        [ id ]
+    );
+    return rows[0];
+}
+
 export {
     Tarefa,
-    inserir
+    inserir,
+    buscar,
+    deletar,
+    buscarPorId
 }

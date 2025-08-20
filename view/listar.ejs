@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        table {
+            border: solid 1px black;
+            background-color: beige;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <a href="/cadastro">Cadastrar</a>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Data Entrega</th>
+            <th>Esta Entregue</th>
+            <th>Ações</th>
+        </tr>
+            <% tarefas.forEach(tarefa => { %>
+                <tr>
+                    <td> <%= tarefa.nome%> </td>
+                    <td> <%= tarefa.descricao%> </td>
+                    <td> <%= tarefa.data_entrega%> </td>
+                    <td> <%= tarefa.esta_entregue%> </td>
+                    <td>
+                        <a href="/deletar/<%= tarefa.id%>">Deletar</a>
+                        <a href="/recuperar/<%= tarefa.id%>">Atualizar</a>
+                    </td>
+                </tr>
+            <% }) %>
+    </table>
+
+
+</body>
+</html>
